@@ -44,8 +44,8 @@ app.post('/api/create', async (req, res) => {
 });
 
 // Serve index.html for the root route
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+app.get('/api/create', (req, res) => {
+  res.send('This is a GET request to /api/create. Use POST to create a user.');
 });
 
 // Start the server
