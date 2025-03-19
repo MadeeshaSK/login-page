@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname)));
 // Routes
 const collection = 'users';
 
-app.post('/create', async (req, res) => {
+app.post('/api/create', async (req, res) => {
   try {
     const data = req.body;
     console.log('Received data:', data);
