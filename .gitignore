@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.pnp/
+.pnp.js
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+serviceAccountKey.json
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build files
+dist/
+build/
+out/
+.next/
+.vercel/
+.serverless/
+
+# Java/Maven
+target/
+*.jar
+*.war
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+
+# Firebase and Firestore
+.firebase/
+firestore.rules.bak
+firestore.indexes.json
+
+# Vercel specific
+.vercel
+.now
