@@ -4,12 +4,14 @@ const admin = require('firebase-admin');
 const cors = require('cors');
 const path = require('path');
 
+const app = express();
+
 // Initialize Firebase Admin SDK
 let serviceAccount;
 if (process.env.FIREBASE_SERVICE_ACCOUNT) {
   serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 } else {
-  serviceAccount = require('./serviceAccountKey.json'); // Fallback for local development
+  serviceAccount = require('./serviceAccountKey.json'); // Local development
 }
 
 admin.initializeApp({
@@ -18,18 +20,18 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-const app = express();
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Serve static files (e.g., index.html, CSS, JS)
+// Serve static files (index.html and assets)
 app.use(express.static(path.join(__dirname)));
 
 // Routes
 const collection = 'users';
 
+// API Route: Create a User
 app.post('/api/create', async (req, res) => {
   try {
     const data = req.body;
@@ -43,13 +45,15 @@ app.post('/api/create', async (req, res) => {
   }
 });
 
-// Serve index.html for the root route
+// Debugging Route
 app.get('/api/create', (req, res) => {
   res.send('This is a GET request to /api/create. Use POST to create a user.');
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Serve index.html for all non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+// ✅ Export the app for Vercel (instead of using app.listen)
+module.exports = app;
